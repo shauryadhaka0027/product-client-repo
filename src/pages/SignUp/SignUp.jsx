@@ -18,7 +18,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Send formData directly instead of wrapping it in { formData }
-    axios.post(`${Url}/signup`, formData).then((data) => {
+    axios.post(`https://product-client-repo.vercel.app/signup`, formData).then((data) => {
       console.log(data.data);
       alert("Sign Up Success");
     }).catch((error) => {
