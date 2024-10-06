@@ -16,7 +16,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`${Url}/login`,formData,{withCredentials: true}).then((response) => {
+    axios.post(`https://product-server-repo.onrender.com/login`,formData,{withCredentials: true}).then((response) => {
       console.log(response.data);
       alert('Login successful');
       localStorage.setItem('token', JSON.stringify(response.data.token));

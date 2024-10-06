@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export const Url = import.meta.env.SERVER_URL;
 
 const SignUp = () => {
@@ -10,7 +11,7 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   });
-
+  const navigate=useNavigate()
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -21,6 +22,8 @@ const SignUp = () => {
     axios.post(`https://product-server-repo.onrender.com/signup`, formData).then((data) => {
       console.log(data.data);
       alert("Sign Up Success");
+      navigate('/login')
+
     }).catch((error) => {
       console.log(error);
     });

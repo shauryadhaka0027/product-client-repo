@@ -25,7 +25,7 @@ const Product = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${Url}/create`, formData, { withCredentials: true })
+      .post(`https://product-server-repo.onrender.com/create`, formData, { withCredentials: true })
       .then((data) => {
         console.log(data.data);
         alert("New product created");
@@ -46,7 +46,7 @@ const Product = () => {
 
   const fetchProducts = () => {
     axios
-      .get(`${Url}/getAllProduct`, { withCredentials: true })
+      .get(`https://product-server-repo.onrender.com/getAllProduct`, { withCredentials: true })
       .then((response) => {
         setProducts(response.data.products);
       })
@@ -73,7 +73,7 @@ const Product = () => {
   const updateProduct = (e) => {
     e.preventDefault();
     axios
-      .patch(`${Url}/update/${currentProductId}`, formData, { withCredentials: true })
+      .patch(`https://product-server-repo.onrender.com/update/${currentProductId}`, formData, { withCredentials: true })
       .then((response) => {
         console.log(response.data);
         alert("Product updated");
@@ -88,7 +88,7 @@ const Product = () => {
 
   const deleteProduct = (id) => {
     axios
-      .delete(`${Url}/delete/${id}`, { withCredentials: true })
+      .delete(`https://product-server-repo.onrender.com/delete/${id}`, { withCredentials: true })
       .then((response) => {
         console.log(response.data);
         alert("Product deleted");
@@ -101,7 +101,7 @@ const Product = () => {
   };
 
   const logout=()=>{
-    axios.get( `${Url}/logout`, { withCredentials: true })
+    axios.get( `https://product-server-repo.onrender.com/logout`, { withCredentials: true })
    .then((response) => {
      console.log(response.data);
      alert("Logged Out")
