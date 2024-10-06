@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
+export const Url = import.meta.env.SERVER_URL;
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8081/login',formData,{withCredentials: true}).then((response) => {
+    axios.post(`${Url}/login`,formData,{withCredentials: true}).then((response) => {
       console.log(response.data);
       alert('Login successful');
       localStorage.setItem('token', JSON.stringify(response.data.token));

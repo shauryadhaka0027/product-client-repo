@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
+export const Url = import.meta.env.SERVER_URL;
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +18,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Send formData directly instead of wrapping it in { formData }
-    axios.post("http://localhost:8081/signup", formData).then((data) => {
+    axios.post(`${Url}/signup`, formData).then((data) => {
       console.log(data.data);
       alert("Sign Up Success");
     }).catch((error) => {
