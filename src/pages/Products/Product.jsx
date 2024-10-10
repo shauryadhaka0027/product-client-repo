@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-export const Url = import.meta.env.SERVER_URL;
+export const Url = import.meta.env.VITE_API_URL;
 
 const Product = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +25,7 @@ const Product = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`https://product-server-repo.onrender.com/create`, formData, { withCredentials: true })
+      .post(`${Url}/create`, formData, { withCredentials: true })
       .then((data) => {
         console.log(data.data);
         alert("New product created");
@@ -46,7 +46,7 @@ const Product = () => {
 
   const fetchProducts = () => {
     axios
-      .get(`https://product-server-repo.onrender.com/getAllProduct`, { withCredentials: true })
+      .get(`${Url}/getAllProduct`, { withCredentials: true })
       .then((response) => {
         setProducts(response.data.products);
       })
@@ -73,7 +73,7 @@ const Product = () => {
   const updateProduct = (e) => {
     e.preventDefault();
     axios
-      .patch(`https://product-server-repo.onrender.com/update/${currentProductId}`, formData, { withCredentials: true })
+      .patch(`${Url}/update/${currentProductId}`, formData, { withCredentials: true })
       .then((response) => {
         console.log(response.data);
         alert("Product updated");
@@ -88,7 +88,7 @@ const Product = () => {
 
   const deleteProduct = (id) => {
     axios
-      .delete(`https://product-server-repo.onrender.com/delete/${id}`, { withCredentials: true })
+      .delete(`${Url}/delete/${id}`, { withCredentials: true })
       .then((response) => {
         console.log(response.data);
         alert("Product deleted");
@@ -101,7 +101,7 @@ const Product = () => {
   };
 
   const logout=()=>{
-    axios.get( `https://product-server-repo.onrender.com/logout`, { withCredentials: true })
+    axios.get( `${Url}/logout`, { withCredentials: true })
    .then((response) => {
      console.log(response.data);
      alert("Logged Out")

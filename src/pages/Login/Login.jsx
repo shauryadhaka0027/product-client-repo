@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
-export const Url = import.meta.env.SERVER_URL;
-
+export const Url = import.meta.env.VITE_API_URL;
+// console.log("urlll",apiUrl)
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -16,7 +16,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://product-server-repo.onrender.com/login`,formData,{withCredentials: true}).then((response) => {
+    axios.post(`${Url}/login`,formData,{withCredentials: true}).then((response) => {
       console.log(response.data);
       alert('Login successful');
       localStorage.setItem('token', JSON.stringify(response.data.token));
